@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #10b981;
+  --color-primary-dark: #059669;
+  --color-bg-dark: #0f172a;
+  --color-bg-light: #f8fafc;
+  --color-card-dark: #1e293b;
+  --color-card-light: #ffffff;
+  --color-text-dark: #f1f5f9;
+  --color-text-light: #1e293b;
+  --color-border-dark: #334155;
+  --color-border-light: #e2e8f0;
+}
+
+/* Light mode - default */
+:root {
+  color-scheme: light;
+}
+
+/* Dark mode - applied via .dark class on html or body */
+.dark {
+  color-scheme: dark;
+}
+
+/* Smooth transitions for theme changes */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* But disable transitions on theme toggle itself for instant feedback */
+.theme-toggle * {
+  transition: none !important;
+}
+
+/* Custom scrollbar for dark mode */
+.dark ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Light mode scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Focus ring styles */
+.focus-ring {
+  @apply outline-none ring-2 ring-emerald-500 ring-offset-2;
+}
+
+.dark .focus-ring {
+  @apply ring-offset-slate-900;
+}
+
+/* Card hover effects */
+.card-hover {
+  @apply transition-all duration-200 hover:shadow-lg;
+}
+
+.dark .card-hover {
+  @apply hover:bg-slate-700/50;
+}
+
+.light .card-hover {
+  @apply hover:shadow-md;
+}
+
+/* Chart container styling */
+.chart-container {
+  @apply bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4;
+}
+
+/* Table styling */
+.data-table {
+  @apply w-full text-sm;
+}
+
+.data-table th {
+  @apply text-left py-3 px-4 text-slate-500 dark:text-slate-400 font-medium border-b border-slate-200 dark:border-slate-700;
+}
+
+.data-table td {
+  @apply py-3 px-4 border-b border-slate-100 dark:border-slate-800;
+}
+
+.data-table tr:hover td {
+  @apply bg-slate-50 dark:bg-slate-800/50;
+}
+
+/* Button base styles */
+.btn-primary {
+  @apply px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-medium transition-colors;
+}
+
+.btn-secondary {
+  @apply px-4 py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 rounded-lg font-medium transition-colors;
+}
+
+/* Input styles */
+.input-field {
+  @apply w-full px-4 py-2 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none transition-colors;
+}
+
+/* Stats card gradient borders */
+.stats-card {
+  @apply relative overflow-hidden;
+}
+
+.stats-card::before {
+  content: '';
+  @apply absolute inset-0 rounded-xl border-x-2 border-t border-emerald-500/20 dark:border-emerald-500/30 -z-10;
+}
+
+/* Loading spinner */
+.spinner {
+  @apply animate-spin rounded-full border-2 border-slate-200 dark:border-slate-700 border-t-emerald-500;
+}
+
+/* Badge styles */
+.badge {
+  @apply inline-flex items-center px-2 py-1 text-xs font-medium rounded-full;
+}
+
+.badge-success {
+  @apply bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400;
+}
+
+.badge-warning {
+  @apply bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400;
+}
+
+.badge-danger {
+  @apply bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400;
+}
+
+.badge-info {
+  @apply bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400;
+}
